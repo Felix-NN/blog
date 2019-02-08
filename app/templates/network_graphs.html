@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link
+    href="https://cdn.pydata.org/bokeh/release/bokeh-1.0.4.min.css"
+    rel="stylesheet" type="text/css">
+    <link
+    href="https://cdn.pydata.org/bokeh/release/bokeh-widgets-1.0.4.min.css"
+    rel="stylesheet" type="text/css">
+    <link
+    href="https://cdn.pydata.org/bokeh/release/bokeh-tables-1.0.4.min.css"
+    rel="stylesheet" type="text/css">
+
+    <script src="https://cdn.pydata.org/bokeh/release/bokeh-1.0.4.min.js"></script>
+    <script src="https://cdn.pydata.org/bokeh/release/bokeh-widgets-1.0.4.min.js"></script>
+    <script src="https://cdn.pydata.org/bokeh/release/bokeh-tables-1.0.4.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(function() {
+			$('form').on('submit', function() {
+				$.ajax({
+                    type: 'POST',
+                    url: '/_update_graph',
+                    data: { nodes : $('#nodes').val(), edges : $('#edges').val() }
+                    }).done(function(data) {
+                        data.div
+                    });
+			    });
+            });
+    </script>
+
+    
+{% endblock %}
+
+{% block content %}
+<h1>Network Graphs</h1>
+{{script | safe}}
+
+<div>
+    <form>
+        Nodes:
+        <input type="number" id="nodes" min="1" max="100" value="10">
+        Edges:
+        <input type="number" id="edges" min="1" max="100" value="5">
+        <button type="submit" class='btn btn-default'>Submit</button></a>
+    </form>
+    <div id= "ba_graph">{{div1 | safe}}</div>
+    
+  
+</div>
+
+{{div2 | safe}}
+{% endblock %}

@@ -53,10 +53,9 @@ def fb_graph():
     'y_range': Range1d(-1,1),
     'plot_width': 800,
     'plot_height': 800,
-    'output_backend': 'webgl'
     }
 
-    plot = figure(**plot_option, x_axis_location=None, y_axis_location=None)
+    plot = figure(**plot_option, x_axis_location=None, y_axis_location=None, output_backend="webgl")
     plot.title.text = "Facebook Graph"
     graph = from_networkx(FB, nx.spring_layout)
     graph.node_renderer.data_source = source
@@ -75,10 +74,7 @@ def fb_graph():
     cdn_js = CDN.js_files
     cdn_css = CDN.css_files
 
-    return render_template("network_graphs.html", script = script, 
-    div = div,
-    cdn_js = cdn_js,
-    cdn_css = cdn_css)
+    return plot
 
 if __name__ == '__main__':
     plot = fb_graph()

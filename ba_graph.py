@@ -21,9 +21,10 @@ def bagraph(user_node, user_edge):
     degrees = BA.degree()
     nodes = BA.nodes()
 
-
     if user_node <= 10 and user_edge <= 10:
         multisize = 2
+    elif user_node <= 20 and user_edge <= 20:
+        multisize = 1.5
     elif user_node <= 30 and user_edge <= 30:
         multisize = 1
     elif user_node <= 50 and user_edge <= 50:

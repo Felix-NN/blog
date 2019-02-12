@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block head %}
+<link rel="shortcut icon" href="#" />
 <link
     href="https://cdn.pydata.org/bokeh/release/bokeh-1.0.4.min.css"
     rel="stylesheet" type="text/css">
@@ -16,39 +17,90 @@
     <script src="https://cdn.pydata.org/bokeh/release/bokeh-tables-1.0.4.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-        $(function() {
-			$('form').on('submit', function() {
-				$.ajax({
-                    type: 'POST',
-                    url: '/_update_graph',
-                    data: { nodes : $('#nodes').val(), edges : $('#edges').val() }
-                    }).done(function(data) {
-                        data.div
-                    });
-			    });
-            });
-    </script>
-
-    
 {% endblock %}
 
 {% block content %}
 <h1>Network Graphs</h1>
 {{script | safe}}
 
-<div>
-    <form>
-        Nodes:
-        <input type="number" id="nodes" min="1" max="100" value="10">
-        Edges:
-        <input type="number" id="edges" min="1" max="100" value="5">
-        <button type="submit" class='btn btn-default'>Submit</button></a>
-    </form>
-    <div id= "ba_graph">{{div1 | safe}}</div>
-    
-  
+<a href="#graphs">link to graphs</a>
+
+<div id="graphs">
+    <div id="ba_graph_section">
+        <form method="POST">
+            Nodes:
+            <input type="number" id="ba_nodes" min="1" max="100" value="10">
+            Edges:
+            <input type="number" id="edges" min="1" max="50" value="5">
+            <button id="ba_submit" class='btn btn-default'>Submit</button>
+        </form>
+        <div id="subtext">*Note: Nodes must be greater than Edges</div>
+        <div id="ba_graph">
+            {{ba_div | safe}}
+        </div>
+
+        <script>
+                $(document).ready(function() {
+                    $('#ba_submit').on('click', function(b) {
+                        var position = $('html').scrollTop();
+                        console.log(position + "1");
+                        b.preventDefault()
+                        var user_nodes = document.getElementById("ba_nodes").value;
+                        var user_edges = document.getElementById("edges").value;
+                        $.ajax({
+                            url: './_update_graph',
+                            type: 'POST',
+                            data: { 'graph' : 'ba', 'ba_nodes' : user_nodes, 'edges' : user_edges },
+                            success : function(data) {
+                            $('html').scrollTop("#ba_graph_section");
+                            console.log(position + "2");
+                            $('#ba_graph').html(data)
+                            console.log(position + "3");
+                            }
+                        })
+                    });
+                });
+            </script>
+    </div>
+    <div id="ws_graph_section">
+        <form method="POST">
+                Nodes:
+                <input type="number" id="ws_nodes" min="1" max="500" value="10">
+                Nodes Connected:
+                <input type="number" id="n_conn" min="1" max="50" value="5">
+                Probability:
+                <input type="number" id="prob" min="0" max="1" value=".5" step="0.05">
+                <button id="ws_submit" class='btn btn-default'>Submit</button>
+        </form>
+        <div id="subtext">*Note: Nodes must be greater than Nodes Connected</div>
+        <div id="ws_graph">
+            {{ws_div | safe}}
+        </div>
+
+        <script>
+                $(document).ready(function() {
+                    $('#ws_submit').on('click', function(w) {
+                        var position = $(window).scrollTop();
+                        console.log(position + "1");
+                        w.preventDefault()
+                        var user_nodes = document.getElementById("ws_nodes").value;
+                        var user_n_conn = document.getElementById("n_conn").value;
+                        var user_prob = document.getElementById("prob").value;
+                        $.ajax({
+                            url: './_update_graph',
+                            type: 'POST',
+                            data: { 'graph' : 'ws', 'ws_nodes' : user_nodes, 'n_conn' : user_n_conn, 'prob' : user_prob },
+                            success : function(data) {
+                                console.log(position + "2");
+                                $('#ws_graph').html(data)
+                                $(window).scrollTop("#ws_graph_section");
+                                console.log(position + "3");
+                            }
+                        })
+                    });
+                });
+            </script>
+    </div>
 </div>
 
-{{div2 | safe}}
 {% endblock %}

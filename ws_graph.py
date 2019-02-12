@@ -21,9 +21,10 @@ def wsgraph(user_node, nodes_connect, prob):
     degrees = WS.degree()
     nodes = WS.nodes()
 
-
     if user_node <= 10 and nodes_connect <= 10:
         multisize = 2
+    elif user_node <= 20 and nodes_connect <= 20:
+        multisize = 1.5
     elif user_node <= 30 and nodes_connect <= 30:
         multisize = 1
     elif user_node <= 50 and nodes_connect <= 50:

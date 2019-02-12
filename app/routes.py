@@ -1,7 +1,9 @@
+import json
 from flask import Flask, render_template, request, jsonify
 from app import app
 from bokeh.resources import CDN
 from bokeh.embed import components
+from bokeh.embed import json_item
 
 from bokeh.layouts import widgetbox
 from bokeh.models import CustomJS, TextInput, Button
@@ -15,7 +17,7 @@ from ws_graph import wsgraph
 def graphs():
     ba_plot = bagraph(10, 5)
     ws_plot = wsgraph(10, 5, .5)
-
+    
     plots = (ba_plot, ws_plot)
     script, div = components(plots)
     cdn_js = CDN.js_files
@@ -23,22 +25,28 @@ def graphs():
   
     return render_template("network_graphs.html", 
     title = "Network Graphs",
-    script = script, 
-    div1 = div[0],
-    div2 = div[1],
+    script = script,
+    ba_div = div[0],
+    ws_div = div[1],
     cdn_js = cdn_js,
     cdn_css = cdn_css)
 
-@app.route('/_update_graph', methods=['POST'])
+@app.route('/_update_graph', methods=['GET', 'POST'])
 def _update_graph():
-    ba_nodes = int(request.form('nodes'))
-    ba_edges = int(request.form('edges'))
-    print("ba_nodes = ", ba_nodes)
-    print("ba_edges = ", ba_edges)
-    ba_plot = bagraph(ba_nodes, ba_edges)
-    script, div = components(ba_plot)
+    type_graph = request.form['graph']
+    if type_graph == 'ba':
+        ba_nodes = int(request.form['ba_nodes'])
+        ba_edges = int(request.form['edges'])
+        plot = bagraph(ba_nodes, ba_edges)
+    elif type_graph == 'ws':
+        ws_nodes = int(request.form['ws_nodes'])
+        ws_n_conn = int(request.form['n_conn'])
+        ws_prob = float(request.form['prob'])
+        plot = wsgraph(ws_nodes, ws_n_conn, ws_prob)
+        
+    script, div = components(plot)
 
-    return jsonify({'div' : div })
+    return render_template("updated_graph.html", div = div, script = script)
 
 if __name__=='__main__':
     app.run()

@@ -63,7 +63,7 @@ def bagraph(user_node, user_edge):
     }
 
     plot = figure(**plot_option, x_axis_location=None, y_axis_location=None)
-    plot.title.text = "Barabasi-Albert Graph"
+    plot.title.text = "Barabási-Albert Graph"
     graph = from_networkx(BA, nx.spring_layout)
     graph.node_renderer.data_source = source
     graph.node_renderer.glyph = Circle(name="Node", size='node_size', fill_color={'field': 'node_color', 'transform': mapper})

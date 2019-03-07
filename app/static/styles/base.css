@@ -1,0 +1,29 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-image: url(gravel.png)
+    /* Background pattern from Toptal Subtle Patterns */
+}
+h1 {
+    font-family: 'Raleway', sans-serif;
+}
+.col-lg-8 {
+    background-color: white;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+a {
+    color: #9999e6;
+}
+a:hover {
+    color: #232390;
+}
+.btn-default {
+    background-color: #140033;
+    color: lightgray;
+}
+.btn-default:hover {
+    color: gray
+}

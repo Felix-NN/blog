@@ -17,121 +17,160 @@
     <script src="https://cdn.pydata.org/bokeh/release/bokeh-tables-1.0.4.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/graph.css') }}">
+
+    
 {% endblock %}
 
 {% block content %}
-<h1>Network Graphs</h1>
-{{script | safe}}
+<div class="container">
 
-<div id="graph_post">
-    <p>
-        In <a href="https://en.wikipedia.org/wiki/Network_science">Network Science</a>, 
-        the study of network connections and how they develop, 
-        there are several predictive algorithms designed to model a network mathematically. 
-        There is a rich history to this dating back hundreds of years, with mathematicians, physicists, 
-        and even psychologists creating models to represent different types of networks and 
-        how they grow and connect. 
-    </p>
-    <p>
-        These mathematical algorithms or equations can be difficult to visualize, and so they are usually 
-        represented by <a href="https://en.wikipedia.org/wiki/Random_graph">Random Graph</a> 
-        structures that follow these established formulas or models. 
-        Two of the more well known models are the <a href="https://en.wikipedia.org/wiki/Barab%C3%A1si%E2%80%93Albert_model">
-        Barabási–Albert preferential attachment model</a> 
-        and the <a href="https://en.wikipedia.org/wiki/Watts%E2%80%93Strogatz_model">Watts-Strogatz small world model</a>. 
-    </p>
-    <p>
-        The Barabási–Albert model treats some nodes as “hubs” who have many more connections or 
-        degrees than other nodes, and new nodes tend more likely connect with the bigger hubs. 
-        The Watts-Strogatz has a probability it takes into account on nodes connecting with neighbors. 
-        And so the size of the hub nodes, and attributes are most important for the Barabási–Albert 
-        model while the connections and how they appear are more important to the Watts-Strogatz model.
-    </p>
-    <p>
-        Below are the two models,  Barabási–Albert above and then the Watts-Strogatz. You can input how 
-        many nodes and edges you’d like the Barabási–Albert model to show with the caveat that nodes must 
-        be more than edges, and nodes are limited from 2 to 100 and edges 1 to 50. For the Watts-Strogatz 
-        model, you have control over how many nodes, nodes connected, and the probability of neighboring 
-        connections, limited from 2 to 100, 1 to 50, and .00 to 1.00 respectively, though you must have 
-        more nodes than nodes connected like the B-A graph.
-    </p>
-</div>
+    {{script | safe}}
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-sm-12">
+            <div id="graph_post">
+                <h1>Network Graphs</h1>
+                <p>
+                    In <a href="https://en.wikipedia.org/wiki/Network_science">Network Science</a>, 
+                    the study of network connections and how they develop, 
+                    there are several predictive algorithms designed to model a network mathematically. 
+                    There is a rich history to this dating back hundreds of years, with mathematicians, physicists, 
+                    and even psychologists creating models to represent different types of networks and 
+                    how they grow and connect. 
+                </p>
+                
+                <img src="{{url_for('static', filename='alina-grubnyak-1254787-unsplash.jpg')}}" alt="Photo by Alina Grubnyak on Unsplash">
+                <small>Photo by <a href="https://unsplash.com/@alinnnaaaa" style="color:black;">Alina Grubnyak</a>  on <a href="https://unsplash.com/" style="color:black">Unsplash</a> </small>
+                
+                <p>
+                    <br>
+                    These mathematical algorithms or equations can be difficult to visualize, and so they are usually 
+                    represented by <a href="https://en.wikipedia.org/wiki/Random_graph">Random Graph</a> 
+                    structures that follow these established formulas or models. 
+                    Two of the more well known models are the <a href="https://en.wikipedia.org/wiki/Barab%C3%A1si%E2%80%93Albert_model">
+                    Barabási–Albert preferential attachment model</a> 
+                    and the <a href="https://en.wikipedia.org/wiki/Watts%E2%80%93Strogatz_model">Watts-Strogatz small world model</a>. 
+                </p>
+                <p>
+                    The Barabási–Albert model treats some nodes as “hubs” who have many more connections or 
+                    degrees than other nodes, and new nodes tend more likely connect with the bigger hubs. 
+                    The Watts-Strogatz has a probability it takes into account on nodes connecting with neighbors. 
+                    And so the size of the hub nodes, and attributes are most important for the Barabási–Albert 
+                    model while the connections and how they appear are more important to the Watts-Strogatz model.
+                </p>
+                <p>
+                    Below are the two models,  Barabási–Albert above and then the Watts-Strogatz. You can input how 
+                    many nodes and edges you’d like the Barabási–Albert model to show with the caveat that nodes must 
+                    be more than edges, and nodes are limited from 2 to 100 and edges 1 to 50. For the Watts-Strogatz 
+                    model, you have control over how many nodes, nodes connected, and the probability of neighboring 
+                    connections, limited from 2 to 100, 1 to 50, and .00 to 1.00 respectively, though you must have 
+                    more nodes than nodes connected like the B-A graph.
+                </p>
+            </div>
 
+            <br>
 
-<div id="graphs">
-    <div id="ba_graph_section">
-        <form method="POST">
-            Nodes:
-            <input type="number" id="ba_nodes" min="2" max="100" value="10" placeholder="2-100">
-            Edges:
-            <input type="number" id="edges" min="1" max="50" value="5" placeholder="1-50">
-            <button id="ba_submit" class='btn btn-default'>Submit</button>
-        </form>
-        <div id="subtext">*Note: Nodes must be greater than Edges</div>
-        <div id="ba_graph">
-            {{ba_div | safe}}
+            <div id="graphs">
+                <div id="ba_graph_section">
+                    <form method="POST" >
+                        <div class="form-row">
+                            <div class="col-sm-3 form-group mb-0">
+                                <label for="ba_nodes">Nodes</label>
+                                <input type="number" id="ba_nodes" class="form-control " min="2" max="100" value="10" placeholder="2-100">
+                            </div>
+                            <div class="col-sm-3 form-group mb-0">
+                                <label for="edges">Edges</label>
+                                <input type="number" id="edges" class="form-control" min="1" max="50" value="5" placeholder="1-50">
+                            </div>
+                            <div class="col-sm-auto ">
+                                <label>&nbsp</label>
+                                <button id="ba_submit" class="btn btn-default btn-md form-control">Submit</button>
+                            </div>
+                        </div>
+                        <small class="text-muted">
+                            Note: Nodes must be greater than Edges
+                        </small>
+                    </form>
+                    <div id="ba_graph">
+                        {{ba_div | safe}}
+                    </div>
+
+                    <script>
+                            $(document).ready(function() {
+                                $('#ba_submit').on('click', function(b) {
+                                    var position = $('html').scrollTop();
+                                    b.preventDefault()
+                                    var user_nodes = document.getElementById("ba_nodes").value;
+                                    var user_edges = document.getElementById("edges").value;
+                                    $.ajax({
+                                        url: './_update_graph',
+                                        type: 'POST',
+                                        data: { 'graph' : 'ba', 'ba_nodes' : user_nodes, 'edges' : user_edges },
+                                        success : function(data) {
+                                            $('html').scrollTop("#ba_graph_section");
+                                            $('#ba_graph').html(data);
+                                        },
+                                    })
+                                });
+                            });
+                        </script>
+                </div>
+                <br>
+                <div id="ws_graph_section">
+                    <form method="POST">
+                        <div class="form-row">
+                            <div class="col-md-3 form-group mb-0">
+                                <label for="ws_nodes">Nodes</label>
+                                <input type="number" id="ws_nodes" class="form-control" min="2" max="100" value="10" placeholder="2-100">
+                            </div>
+                            <div class="col-md-3 form-group mb-0">
+                                <label for="n_conn">Nodes Connected</label>
+                                <input type="number" id="n_conn" class="form-control" min="1" max="50" value="5" placeholder="1-50">
+                            </div>
+                            <div class="col-md-3 form-group mb-0">
+                                <label for="prob">Probability</label>
+                                <input type="number" id="prob" class="form-control" min="0" max="1" value=".5" placeholder="0.0-1.0" step="0.05">
+                            </div>
+                            <div class="col-sm-auto">
+                                <label>&nbsp</label>
+                                <button id="ws_submit" class='btn btn-default btn-md form-control'>Submit</button>
+                            </div>
+                        </form>
+                    <small class="text-muted">
+                            Note: Nodes must be greater than Nodes Connected
+                        </small>
+                    <div id="ws_graph">
+                        {{ws_div | safe}}
+                    </div>
+
+                    <script>
+                            $(document).ready(function() {
+                                $('#ws_submit').on('click', function(w) {
+                                    var position = $(window).scrollTop();
+                                    w.preventDefault()
+                                    var user_nodes = document.getElementById("ws_nodes").value;
+                                    var user_n_conn = document.getElementById("n_conn").value;
+                                    var user_prob = document.getElementById("prob").value;
+                                    $.ajax({
+                                        url: './_update_graph',
+                                        type: 'POST',
+                                        data: { 'graph' : 'ws', 'ws_nodes' : user_nodes, 'n_conn' : user_n_conn, 'prob' : user_prob },
+                                        success : function(data) {
+                                            $('#ws_graph').html(data)
+                                            $(window).scrollTop("#ws_graph_section");
+                                        }
+                                    })
+                                });
+                            });
+                        </script>
+                </div>
+                <div class="alert alert-danger alert-dismissible fade show">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Error!</strong> Nodes must be greater than.
+                </div>
+            </div>
         </div>
-
-        <script>
-                $(document).ready(function() {
-                    $('#ba_submit').on('click', function(b) {
-                        var position = $('html').scrollTop();
-                        b.preventDefault()
-                        var user_nodes = document.getElementById("ba_nodes").value;
-                        var user_edges = document.getElementById("edges").value;
-                        $.ajax({
-                            url: './_update_graph',
-                            type: 'POST',
-                            data: { 'graph' : 'ba', 'ba_nodes' : user_nodes, 'edges' : user_edges },
-                            success : function(data) {
-                                $('html').scrollTop("#ba_graph_section");
-                                $('#ba_graph').html(data);
-                            },
-                        })
-                    });
-                });
-            </script>
-    </div>
-    <div id="ws_graph_section">
-        <form method="POST">
-                Nodes:
-                <input type="number" id="ws_nodes" min="2" max="100" value="10" placeholder="2-100">
-                Nodes Connected:
-                <input type="number" id="n_conn" min="1" max="50" value="5" placeholder="1-50">
-                Probability:
-                <input type="number" id="prob" min="0" max="1" value=".5" placeholder="0.0-1.0" step="0.05">
-                <button id="ws_submit" class='btn btn-default'>Submit</button>
-        </form>
-        <div id="subtext">*Note: Nodes must be greater than Nodes Connected</div>
-        <div id="ws_graph">
-            {{ws_div | safe}}
-        </div>
-
-        <script>
-                $(document).ready(function() {
-                    $('#ws_submit').on('click', function(w) {
-                        var position = $(window).scrollTop();
-                        w.preventDefault()
-                        var user_nodes = document.getElementById("ws_nodes").value;
-                        var user_n_conn = document.getElementById("n_conn").value;
-                        var user_prob = document.getElementById("prob").value;
-                        $.ajax({
-                            url: './_update_graph',
-                            type: 'POST',
-                            data: { 'graph' : 'ws', 'ws_nodes' : user_nodes, 'n_conn' : user_n_conn, 'prob' : user_prob },
-                            success : function(data) {
-                                $('#ws_graph').html(data)
-                                $(window).scrollTop("#ws_graph_section");
-                            }
-                        })
-                    });
-                });
-            </script>
-    </div>
-    <div class="alert alert-danger alert-dismissible fade show">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong>Error!</strong> Nodes must be greater than {{ err_type }}.
     </div>
 </div>
-
 {% endblock %}

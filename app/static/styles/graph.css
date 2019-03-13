@@ -1,15 +1,47 @@
 body {
+    height: 100%;
+    width: 100%;
     font-family: 'Open Sans', sans-serif;
-    background-image: url(gravel.png)
+    background-image: url(gravel.png); 
     /* Background pattern from Toptal Subtle Patterns */
+    background-color: lightgray;
 }
 h1 {
     font-family: 'Raleway', sans-serif;
+    font-size: 60px;
+    text-shadow: 5px 5px 10px black;
+}
+h3 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 30px;
+    text-shadow: 5px 5px 10px black;
+}
+.bg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(robert-anasch-761606-unsplash-banner.jpg);
+    background-position: center; 
+    background-size: cover; 
+    background-repeat: no-repeat;
+    position: relative;
+    padding-bottom: 50%;
+}
+.post-title {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 25px;
+    padding-bottom: 5%;
+    text-align: center;
+    width: 100%;
+}
+.photo-credit {
+    color: black;
 }
 .col-lg-8 {
     background-color: white;
+    border-radius: 15px;
 }
-img {
+#wires img {
     max-width: 100%;
     height: auto;
     border-radius: 10px;

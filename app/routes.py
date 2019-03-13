@@ -14,6 +14,8 @@ from ws_graph import wsgraph
 
 @app.route('/')
 @app.route('/index')
+
+@app.route('/graphs')
 def graphs():
     ba_plot = bagraph(10, 5)
     ws_plot = wsgraph(10, 5, .5)
@@ -52,6 +54,11 @@ def _update_graph():
     script, div = components(plot)
    
     return render_template("updated_graph.html", div = div, script = script)
+
+@app.route('/references')
+def references():
+    return render_template("references.html", title = "References")
+
 
 if __name__=='__main__':
     app.run()

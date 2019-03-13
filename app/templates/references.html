@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-deck py-4">
+                <div class="card">
+                    <img class="card-img-top" src="{{url_for('static', filename='flask.jpg')}}" alt="Flask">
+                    <div class="card-body">
+                        <h4 class="card-title"><a href="http://flask.pocoo.org/docs/1.0/">Flask</a></h4>
+                        <p class="card-text">A "Microframework" designed to create Python web applications. Starting
+                            from a simple base you can extend it to fit your needs while using your Python code in the
+                            backend.<br> <br> I used this as I have most of my experience in Python and I wanted to find
+                            the best way to publish my Graphs project.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="{{url_for('static', filename='bokeh.jpg')}}" alt="Bokeh">
+                    <div class="card-body">
+                        <h4 class="card-title"><a href="http://bokeh.pydata.org/en/latest/index.html">Bokeh</a></h4>
+                        <p class="card-text">Interactive visualization at your fingertips, Bokeh is a Python library
+                            that allows you to create data representative graphs and charts that look slick and
+                            professional and let users manipulate large or streaming datasets. <br> <br> Bokeh is one of
+                            the better looking graphing libraries available that had the streaming and interactivity I
+                            was looking for to represent the graphing models I used.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="{{url_for('static', filename='networkx.jpg')}}" alt="NetworkX">
+                    <div class="card-body">
+                        <h4 class="card-title"><a
+                                href="https://networkx.github.io/documentation/networkx-1.10/index.html">NetworkX</a>
+                        </h4>
+                        <p class="card-text">A library available for Python filled with tools and algorithms designed to
+                            easily create networks and graphs. A bit bare bones, but lays the foundation for other
+                            libraries to show or manipulate the results. <br> <br> Fairly easy to follow documentation
+                            and what seems to be the standard for network analysis, recommended to me by my professor.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-deck py-4">
+                <div class="card">
+                    <img class="card-img-top" src="{{url_for('static', filename='jquery.jpg')}}" alt="jQuery">
+                    <div class="card-body">
+                        <h4 class="card-title"><a href="https://jquery.com/">jQuery</a></h4>
+                        <p class="card-text">A popular JavaScript library that is minimal and versatile. The Ajax
+                            (Asynchronous JavaScript and XML) calls in jQuery are much easier to parse and write making
+                            it the preferred method for many focusing on allowing the user to fetch and update data from
+                            the server without refreshes. <br> <br> I wanted the user experience to be relatively
+                            seamless, it was important to me that there were no new pages or browser refreshes and so I
+                            decided to use jQuery to write the Ajax functions. </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="{{url_for('static', filename='w3schools.jpg')}}" alt="W3Schools">
+                    <div class="card-body">
+                        <h4 class="card-title"><a href="https://www.w3schools.com/">W3Schools</a></h4>
+                        <p class="card-text">A tutorial/documentation site designed with beginners in mind. It’s goal to
+                            teach from the basic level to more advanced techniques on a large variety of programming
+                            languages and tools, focused on web development. <br> <br> As someone with zero experience
+                            with both HTML and CSS this was a much needed resource that helped guide me into laying the
+                            foundation of this website.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="{{url_for('static', filename='bootstrap.jpg')}}" alt="Bootstrap">
+                    <div class="card-body">
+                        <h4 class="card-title"><a href="https://getbootstrap.com/">Bootstrap</a></h4>
+                        <p class="card-text">A toolkit that gives you a frame for building sites, built on a grid system
+                            with flexbox built in, it allows for mobile-first projects that conform and update
+                            responsively. Has great documentation and is one of the most popular libraries and add-ons
+                            available to web developers. <br> <br> Bootstrap helped me make my site more polished and
+                            look more advanced than if I were to try to adjust the buttons and bars myself.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-deck py-4">
+                <div class="card">
+                    <img class="card-img-top" src="{{url_for('static', filename='subtlepatterns.jpg')}}"
+                        alt="Subtle Patterns">
+                    <div class="card-body">
+                        <h4 class="card-title"><a href="https://www.toptal.com/designers/subtlepatterns/">Subtle
+                                Patterns</a></h4>
+                        <p class="card-text">Subtle patterns made by designers to accent and not distract from content
+                            on any site. A free resource that adds character and is incredibly simple and easy to use.
+                            They ask for nothing but credit in the css comments. <br> <br> One of the last things I
+                            added to have my site stand out just a bit more. I really like the patterns available as
+                            they don’t stand out too much.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="{{url_for('static', filename='unsplash.jpg')}}" alt="Unsplash">
+                    <div class="card-body">
+                        <h4 class="card-title"><a href="https://unsplash.com/">Unsplash</a></h4>
+                        <p class="card-text">A large collection of free to use stock photos in amazing size and quality.
+                            A very wide selection of artistic shots that are available under many categories to match
+                            your needs. <br> <br> I needed stock photos to not only break up what could be considered a
+                            monotonous format but also to represent the goals and ideas in an artistic abstract way that
+                            was appealing to me.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="{{url_for('static', filename='googlefonts.jpg')}}"
+                        alt="Google Fonts">
+                    <div class="card-body">
+                        <h4 class="card-title"><a href="https://fonts.google.com/">Google Fonts</a></h4>
+                        <p class="card-text">Another great free resource that allows one to add some subtle character
+                            and personality to a website. Google does an amazing job of not only showing you many
+                            different font choices, but also how that font can be adjusted and what pairing goes well
+                            together. <br> <br> I wanted something subtle that I could choose to personalize my site
+                            just a bit more.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

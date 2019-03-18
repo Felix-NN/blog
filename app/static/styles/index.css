@@ -1,0 +1,71 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-image: url(jeremy-bishop-200529-unsplash.jpg);
+    /* Photo by Jeremy Bishop on Unsplash https://unsplash.com/@jeremybishop */
+    background-position: center; 
+    background-size: cover; 
+    background-repeat: no-repeat;
+    position: relative;
+    padding-bottom: 35%;
+    background-color: gray;
+}
+h1 {
+    font-family: 'Raleway', sans-serif;
+    color: white;
+    font-size: 75px;
+    text-shadow: 5px 5px 10px black;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+h4 {
+    font-family: 'Raleway', sans-serif;
+    color: white;
+    font-size: 45px;
+    text-shadow: 5px 5px 10px black;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.navbar {
+    background-color: #140033;
+}
+.dropdown-menu {
+    background-color: #140033;
+    border-radius: 0px 0px 10px 10px;
+}
+.dropdown-item {
+    color: white;
+}
+.dropdown-menu a:hover {
+    color: gray;
+    background-color: #140033;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+}
+a {
+    color: #9999e6;
+}
+a:hover {
+    color: #232390;
+}
+#buttons{
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.btn-default {
+    background-color: #140033;
+    color: lightgray;
+}
+.btn-default:hover {
+    color: gray
+}
+
+
+
+

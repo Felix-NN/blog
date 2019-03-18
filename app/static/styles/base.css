@@ -1,7 +1,5 @@
 body {
     font-family: 'Open Sans', sans-serif;
-    background-image: url(prism.png);
-    /* Background pattern from Toptal Subtle Patterns */
     background-color: gray;
 }
 h1, h4 {
@@ -38,12 +36,13 @@ a {
 a:hover {
     color: #232390;
 }
-.btn-default {
+.btn-outline-default {
+    border-color: #140033;
+    color: white;
+}
+.btn-outline-default:hover {
     background-color: #140033;
     color: lightgray;
-}
-.btn-default:hover {
-    color: gray
 }
 .card-title a {
     color: black;

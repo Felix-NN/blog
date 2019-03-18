@@ -45,5 +45,7 @@ a:hover {
     color: black;
     text-decoration-line: underline;
 }
-
+.card-title a:hover {
+    color: rgb(70, 70, 70);
+}
 

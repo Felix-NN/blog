@@ -14,6 +14,8 @@ from ws_graph import wsgraph
 
 @app.route('/')
 @app.route('/index')
+def index():
+    return render_template("index.html", title = "Home")
 
 @app.route('/graphs')
 def graphs():

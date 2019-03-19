@@ -42,15 +42,11 @@ def _update_graph():
     if type_graph == 'ba':
         ba_nodes = int(request.form['ba_nodes'])
         ba_edges = int(request.form['edges'])
-        if ba_nodes <= ba_edges:
-            return error
         plot = bagraph(ba_nodes, ba_edges)
     elif type_graph == 'ws':
         ws_nodes = int(request.form['ws_nodes'])
         ws_n_conn = int(request.form['n_conn'])
         ws_prob = float(request.form['prob'])
-        if ws_nodes <= ws_n_conn:
-            return error
         plot = wsgraph(ws_nodes, ws_n_conn, ws_prob)
     
     script, div = components(plot)

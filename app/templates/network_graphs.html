@@ -109,6 +109,7 @@
                             Note: Nodes must be greater than Edges
                         </small>
                     </form>
+                    <div class="ba_error w-75"></div>
                     <div id="ba_graph">
                         {{ba_div | safe}}
                     </div>
@@ -126,6 +127,10 @@
                                     success: function (data) {
                                         $('#ba_graph').html(data);
                                         return false;
+                                    },
+                                    error: function () {
+                                        $('.ba_error').empty();
+                                        $('.ba_error').append("<div class='alert alert-danger alert-dismissible fade show'><button type='button' class='close' data-dismiss='alert' aria-label='close'>&times;</button><strong>Error!</strong> Nodes must be greater than Edges!</div>");
                                     },
                                 })
                             });
@@ -159,6 +164,7 @@
                                 Note: Nodes must be greater than Nodes Connected
                             </small>
                     </form>
+                    <div class="ws_error w-75"></div>
                     <div id="ws_graph">
                         {{ws_div | safe}}
                     </div>
@@ -177,17 +183,17 @@
                                     success: function (data) {
                                         $('#ws_graph').html(data);
                                         return false;
-                                    }
+                                    },
+                                    error: function () {
+                                        $('.ws_error').empty();
+                                        $('.ws_error').append("<div class='alert alert-danger alert-dismissible fade show'><button type='button' class='close' data-dismiss='alert' aria-label='close'>&times;</button><strong>Error!</strong> Nodes must be greater than Nodes Connected!</div>");
+                                    },
                                 })
 
                             });
                         });
                     </script>
                 </div>
-                <!-- <div class="alert alert-danger alert-dismissible fade show">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <strong>Error!</strong> Nodes must be greater than.
-                </div> -->
             </div>
         </div>
     </div>

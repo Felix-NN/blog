@@ -1,7 +1,6 @@
 body {
     font-family: 'Open Sans', sans-serif;
     background-image: url(jeremy-bishop-200529-unsplash.jpg);
-    /* Photo by Jeremy Bishop on Unsplash https://unsplash.com/@jeremybishop */
     background-position: center; 
     background-size: cover; 
     background-repeat: no-repeat;
@@ -65,7 +64,21 @@ a:hover {
 .btn-default:hover {
     color: gray
 }
-
+.btn-outline-default {
+    border-color: #140033;
+    color: white;
+    border-radius: 10px;
+}
+.btn-outline-default:hover {
+    background-color: #140033;
+    color: lightgray;
+}
+.photo-credit {
+    position: fixed;
+    bottom: 5px;
+    left: 5px;
+    color: white;
+}
 
 
 

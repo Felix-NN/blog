@@ -66,6 +66,7 @@ def fb_graph():
                             ('Connections', '@connections'), ('Eigen Value', '@eigenv{.000000}'), ('Betweenness', '@between{.000000}'), 
                             ]))
     graph.selection_policy = NodesAndLinkedEdges()
+    plot.toolbar.active_scroll = plot.select_one(WheelZoomTool)
 
     #4038 total nodes
 

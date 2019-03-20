@@ -57,6 +57,9 @@ def _update_graph():
 def references():
     return render_template("references.html", title = "References")
 
+@app.route('/facebook_graph')
+def facebook_graph():
+    return render_template("facebook_graph.html")
 
 if __name__=='__main__':
     app.run()

@@ -1,32 +1,27 @@
+html {
+    height: 90%;
+}
 body {
+    height: 100%;
     font-family: 'Open Sans', sans-serif;
     background-image: url(jeremy-bishop-200529-unsplash.jpg);
     background-position: center; 
     background-size: cover; 
     background-repeat: no-repeat;
     position: relative;
-    padding-bottom: 35%;
-    background-color: gray;
+    background-color: rgb(23, 23, 23);
 }
 h1 {
     font-family: 'Raleway', sans-serif;
     color: white;
     font-size: 75px;
     text-shadow: 5px 5px 10px black;
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }
 h4 {
     font-family: 'Raleway', sans-serif;
     color: white;
     font-size: 45px;
     text-shadow: 5px 5px 10px black;
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }
 .navbar {
     background-color: #140033;
@@ -51,12 +46,7 @@ a {
 a:hover {
     color: #232390;
 }
-#buttons{
-    position: absolute;
-    top: 80%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+
 .btn-default {
     background-color: #140033;
     color: lightgray;

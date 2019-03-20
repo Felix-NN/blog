@@ -58,15 +58,18 @@
                 <p class="pt-2">
                     These mathematical algorithms or equations can be difficult to visualize, and so they are usually
                     represented by <a href="https://en.wikipedia.org/wiki/Random_graph">Random Graph</a>
-                    structures that follow these established formulas or models.
+                    structures that follow these established formulas or models. It's possible to see what a real world
+                    example would look like using a JSON file with 4038 nodes to simulate what a <a href="#"
+                        data-toggle="modal" data-target="#warningModal">Facebook Network</a> would
+                    look like visualized.
+                </p>
+                <p>
                     Two of the more well known models are the <a
                         href="https://en.wikipedia.org/wiki/Barab%C3%A1si%E2%80%93Albert_model">
                         Barabási–Albert preferential attachment model</a>
                     and the <a href="https://en.wikipedia.org/wiki/Watts%E2%80%93Strogatz_model">Watts-Strogatz small
-                        world model</a>.
-                </p>
-                <p>
-                    The Barabási–Albert model treats some nodes as “hubs” who have many more connections or
+                        world model</a>. The Barabási–Albert model treats some nodes as “hubs” who have many more
+                    connections or
                     degrees than other nodes, and new nodes tend more likely connect with the bigger hubs.
                     The Watts-Strogatz has a probability it takes into account on nodes connecting with neighbors.
                     And so the Barabási–Albert model is more focused on the size of the hub nodes and attributes,
@@ -82,6 +85,28 @@
                     connections, limited from 2 to 100, 1 to 50, and .00 to 1.00 respectively, though you must have
                     more nodes than nodes connected, similarly to the B-A graph.
                 </p>
+            </div>
+
+            <div class="modal fade" id="warningModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title"><span class="text-danger"><strong>WARNING!</strong></span></h2>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Because of the large amount of nodes and connections, the Facebook Graph can be very
+                            computer
+                            intensive and slow.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="/facebook_graph" target="_blank" role="button" class="btn btn-default">Continue</a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <br>

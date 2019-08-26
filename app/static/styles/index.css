@@ -24,10 +24,10 @@ h4 {
     text-shadow: 5px 5px 10px black;
 }
 .navbar {
-    background-color: #140033;
+    background-color: #0e0324;
 }
 .dropdown-menu {
-    background-color: #140033;
+    background-color: #0e0324;
     border-radius: 0px 0px 10px 10px;
 }
 .dropdown-item {
@@ -35,7 +35,7 @@ h4 {
 }
 .dropdown-menu a:hover {
     color: gray;
-    background-color: #140033;
+    background-color: #0e0324;
 }
 .navbar-dark .navbar-nav .nav-link {
     color: white;
@@ -48,19 +48,19 @@ a:hover {
 }
 
 .btn-default {
-    background-color: #140033;
+    background-color: #0e0324;
     color: lightgray;
 }
 .btn-default:hover {
     color: gray
 }
 .btn-outline-default {
-    border-color: #140033;
+    border-color: #0e0324;
     color: white;
     border-radius: 10px;
 }
 .btn-outline-default:hover {
-    background-color: #140033;
+    background-color: #0e0324;
     color: lightgray;
 }
 .photo-credit {

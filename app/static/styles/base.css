@@ -6,10 +6,10 @@ h1, h4 {
     font-family: 'Raleway', sans-serif;
 }
 .navbar {
-    background-color: #140033;
+    background-color: #0e0324;
 }
 .dropdown-menu {
-    background-color: #140033;
+    background-color: #0e0324;
     border-radius: 0px 0px 10px 10px;
     min-width: 0 !important;
 }
@@ -18,7 +18,7 @@ h1, h4 {
 }
 .dropdown-menu a:hover {
     color: gray;
-    background-color: #140033;
+    background-color: #0e0324;
 }
 .navbar-dark .navbar-nav .nav-link {
     color: white;

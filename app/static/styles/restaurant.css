@@ -1,0 +1,99 @@
+body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+    background-image: url(dark_brick_wall.png); 
+    /* Background pattern from Toptal Subtle Patterns */
+    background-color: lightgray;
+}
+h1 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 60px;
+    text-shadow: 5px 5px 10px black;
+}
+h2 {
+    font-family: 'Raleway', sans-serif;
+}
+h3 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 30px;
+    text-shadow: 5px 5px 10px black;
+    margin-left: 250px;
+    margin-right: 250px;
+}
+.bg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(clement-falize-mHkTuz9OPH0-unsplash.jpg);
+    background-position: center; 
+    background-size: cover; 
+    background-repeat: no-repeat;
+    position: relative;
+    height: 100%;
+    padding-bottom: 50%;
+}
+.post-title {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 25px;
+    text-align: center;
+    width: 100%;
+    padding-bottom: 5%;
+}
+.photo-credit {
+    color: rgb(175, 175, 175);
+}
+.col-lg-12 {
+    background-color: white;
+    border-radius: 15px;
+    position: relative;
+    top: -24px;
+    padding-top: 10px;
+}
+#raw_code {
+    padding-top: 10px;
+}
+.figure {
+    position: relative;
+    top: -10px;
+}
+a {
+    color: gray;
+}
+a:hover {
+    color: #140033;
+}
+.btn-default {
+    background-color: #140033;
+    color: lightgray;
+}
+.btn-default:hover {
+    color: gray
+}
+.prettyprint {
+    border-radius: 15px;
+}
+.carousel-indicators li {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background-color: rgb(100, 100, 100);
+}
+.carousel-indicators .active {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background-color: #140033;
+}
+.fa-angle-right {
+    position: relative;
+    right: -40px;
+    font-size: 25px;
+    color: rgb(100, 100, 100);
+}
+.fa-angle-left {
+    position: relative;
+    left: -40px;
+    font-size: 25px;
+    color: rgb(100, 100, 100);
+}

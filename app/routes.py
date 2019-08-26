@@ -61,5 +61,9 @@ def references():
 def facebook_graph():
     return render_template("facebook_graph.html")
 
+@app.route('/restaurant')
+def restaurant():
+    return render_template("restaurant.html", title = "Restaurant Predictor")
+
 if __name__=='__main__':
     app.run()

@@ -13,6 +13,24 @@ h1, h4 {
     border-radius: 0px 0px 10px 10px;
     min-width: 0 !important;
 }
+.show > .dropdown-menu {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);  
+    opacity:1;
+  }
+    
+.dropdown-menu {
+    overflow: visible;
+    opacity:.3;
+    -webkit-transform-origin: top;
+    transform-origin: top;
+    -webkit-animation-fill-mode: forwards;  
+    animation-fill-mode: forwards; 
+    -webkit-transform: scale(1, 0);
+    display: block; 
+    transition: all 0.3s linear;
+    -webkit-transition: all 0.3s linear;
+  }
 .dropdown-item {
     color: white;
 }

@@ -9,7 +9,6 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:600|Raleway" rel="stylesheet">
         <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
-
         <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/base.css') }}">
         
         {% if title %}
@@ -19,6 +18,7 @@
         {% endif %}
       
         {% block head %}{% endblock %}
+
 
     </head>
     <body>
@@ -30,12 +30,10 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle py-0" href="#" id="projectDropdown" role="button" data-toggle="dropdown">Projects</a>
                     <div class="dropdown-menu">
+                        <a class="dropdown-item py-0 px-2 mx-0" href="/sample">Sample Quiz</a>
                         <a class="dropdown-item py-0 px-2 mx-0" href="/graphs">Network Graphs</a>
                         <a class="dropdown-item py-0 px-2 mx-0" href="/restaurant">Restaurant Predictor</a>
                     </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link py-0" href="/references">References</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle py-0" href="#" role="button" data-toggle="dropdown">Contact</a>

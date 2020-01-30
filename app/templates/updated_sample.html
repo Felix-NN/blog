@@ -1,0 +1,293 @@
+    <div class="row justify-content-center">
+        <div class="col">
+
+            <section class="sample-layout-row sample-container">
+
+                <div class="sampleEntryBox" itemscope itemtype="http://schema.org/MusicRecording">
+                    <div class="sampleTracksWrap sample-layout-row" id="sampleWrap_dest">
+                        <div class="sampleTrackWrap sampleTrackWrapRight sample-layout-row-right">
+
+                            <h2 class="artistID" id="{{ song_id }}">{{ artist_1 }}</h2>
+                            <h3>{{ song_name_1 }}</h3>
+
+
+                        </div>
+                    </div>
+                    <div class="sample-timings">
+                        <div class="timing-wrapper">Sample appears at
+
+
+                            <strong id="sample-dest-timing"
+                                data-timings="{% for time in times_1 %} {{time ~ ',' }} {% endfor %}">
+
+                                {% set seconds = (times_1[0] % 60) %}
+                                <span id="dest-timing-{{ times_1[0] }}" class="timing dest-timing"
+                                    data-timing-index="0">{{ times_1[0] // 60 ~ ":%02i"|format(seconds) }}</span>
+
+                                {% if times_1|length >= 3 %}
+
+                                {% set count = namespace(value=1) %}
+
+                                {% for time in times_1[1:-1] %}
+
+                                {% set seconds = (time % 60) %}
+                                <span class="separator">,</span> <span id="dest-timing-{{ time }}"
+                                    class="timing dest-timing"
+                                    data-timing-index="{{ count.value }}">{{ time // 60 ~ ":%02i"|format(seconds) }}</span>
+                                {% set count.value = count.value + 1 %}
+
+                                {% endfor %}
+
+                                {% set seconds = (times_1[count.value] % 60) %}
+                                <span class="normal">and</span> <span id="dest-timing-{{ times_1[count.value] }}"
+                                    class="timing dest-timing"
+                                    data-timing-index="{{ count.value }}">{{ times_1[count.value] // 60 ~ ":%02i"|format(seconds) }}</span>
+
+
+                                {% elif times_1|length == 2 %}
+
+                                {% set seconds = (times_1[1] % 60) %}
+                                <span class="normal">and</span> <span id="dest-timing-{{ times_1[1] }}"
+                                    class="timing dest-timing"
+                                    data-timing-index="1">{{ times_1[1] // 60 ~ ":%02i"|format(seconds) }}</span>
+
+                                {% endif %}
+
+                            </strong>
+
+                            {% if throughout_1 == 1 %}
+                            (and throughout)
+                            {% endif %}
+
+                        </div>
+
+                        <div id="jump-dest" class="jump-button" title="Jump to sample">
+                            <span class="jump">jump</span> <svg xmlns="http://www.w3.org/2000/svg" width="28"
+                                height="28" viewBox="0 0 32 32">
+                                <path d="M16 27V17L6 27V5l10 10V5l11 11z" /></svg>
+                        </div>
+
+
+                    </div>
+
+
+
+                    {% if source_type_1 == 1 %}
+
+                    <div class="sampleVideos sample-layout-row media-wrapper">
+                        <div class="sample-embed embed-dest sample-layout-row-right media-container youtube">
+
+
+
+                            <div class="embed-placeholder youtube-placeholder" data-width="342" data-height="192"
+                                data-id="{{ data_id_1 }}"
+                                data-player-vars='{"modestbranding": 1, "rel": 0, "iv_load_policy": 3}'>
+                                <div class="play-button"></div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    {% elif source_type_1 == 2 %}
+
+                    <div class="sampleVideos sample-layout-row media-wrapper">
+                        <div class="sample-embed embed-dest sample-layout-row-right media-container spotify">
+
+
+                            <iframe loading="lazy" src="https://embed.spotify.com/?uri=spotify:track:{{ data_id_1 }}"
+                                frameborder="0" allowtransparency="true"
+                                style="width:342px;height:192px;background-color:#272626;"
+                                title="Spotify embed {{ data_id_1 }}"></iframe>
+
+
+                        </div>
+                    </div>
+
+                    {% endif %}
+
+
+                    <div class="sampleAdditionalInfo sample-layout-row">
+                        <div class="sampleAdditionalInfoContainer sample-layout-row-right">
+                            <div class="songChoice">
+                                <button id="random" type="button" class="btn btn-outline-default btn-lg     btn-block">Random Song</button>
+                                <button id="next" type="button" class="btn btn-outline-default btn-lg     btn-block">Next Song</button>
+                                <button id="prev" type="button" class="btn btn-outline-default btn-lg     btn-block">Previous
+                                    Song</button>
+                                <div class="btn-group btn-block">
+                                   <button type="button" class="btn btn-outline-default btn-lg     btn-block dropdown-toggle" data-display="static"    data-toggle="dropdown">
+                                   Choose Song <span class="caret"></span></button>
+                                   <ul class="dropdown-menu btn-block text-center" role="menu">
+                                    {% for key, value in song_info.items() %}
+                                     <li><a class="songList" id="{{ key }}" href="#">{{ value }}</a></li>
+                                     {% endfor %}
+                                   </ul>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+
+                    </script>
+                </div>
+
+
+
+        </div>
+
+        <div class="embed-arrow-wrapper">
+            <div class="embed-arrow"></div>
+        </div>
+
+
+
+
+        <div class="col">
+
+            <div class="sampleEntryBox" itemscope itemtype="http://schema.org/MusicRecording">
+                <div class="sampleTracksWrap sample-layout-row" id="sampleWrap_source">
+                    <div class="sampleTrackWrap sampleTrackWrapRight sample-layout-row-right">
+                        <div class="blurred sampleArtistInfo">
+                            <h2 id="artist">{{ artist_2 }}</h2>
+                            <h3 id="track">{{ song_name_2 }}</h3>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="sample-timings">
+                    <div class="timing-wrapper">Sample appears at
+
+
+                        <strong id="sample-source-timing"
+                            data-timings="{% for time in times_2 %} {{time ~ ',' }} {% endfor %}">
+
+                            {% set seconds = (times_2[0] % 60) %}
+                            <span id="source-timing-{{ times_2[0] }}" class="timing source-timing"
+                                data-timing-index="0">{{ times_2[0] // 60 ~ ":%02i"|format(seconds) }}</span>
+
+                            {% if times_2|length >= 3 %}
+
+                            {% set count = namespace(value=1) %}
+
+                            {% for time in times_2[1:-1] %}
+
+                            {% set seconds = (time % 60) %}
+                            <span class="separator">,</span> <span id="source-timing-{{ time }}"
+                                class="timing source-timing"
+                                data-timing-index="{{ count.value }}">{{ time // 60 ~ ":%02i"|format(seconds) }}</span>
+                            {% set count.value = count.value + 1 %}
+
+                            {% endfor %}
+
+                            {% set seconds = (times_2[count.value] % 60) %}
+                            <span class="normal">and</span> <span id="source-timing-{{ times_2[count.value] }}"
+                                class="timing source-timing"
+                                data-timing-index="{{ count.value }}">{{ times_2[count.value] // 60 ~ ":%02i"|format(seconds) }}</span>
+
+
+                            {% elif times_2|length == 2 %}
+
+                            {% set seconds = (times_2[1] % 60) %}
+                            <span class="normal">and</span> <span id="source-timing-{{ times_2[1] }}"
+                                class="timing source-timing"
+                                data-timing-index="1">{{ times_2[1] // 60 ~ ":%02i"|format(seconds) }}</span>
+
+                            {% endif %}
+
+                        </strong>
+
+                        {% if throughout_2 == 1 %}
+                        (and throughout)
+                        {% endif %}
+
+                    </div>
+
+                    <div id="jump-source" class="jump-button" title="Jump to sample">
+                        <span class="jump">jump</span> <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                            viewBox="0 0 32 32">
+                            <path d="M16 27V17L6 27V5l10 10V5l11 11z" /></svg>
+                    </div>
+
+
+                </div>
+
+
+
+                {% if source_type_2 == 1 %}
+
+                <div class="blurred sampleVideos sample-layout-row media-wrapper">
+                    <div class="sample-embed embed-source sample-layout-row-right media-container youtube">
+
+
+
+                        <div id="source-play" class="embed-placeholder youtube-placeholder" data-width="342" data-height="192"
+                            data-id="{{ data_id_2 }}"
+                            data-player-vars='{"modestbranding": 1, "rel": 0, "iv_load_policy": 3}'>
+                            <div class="play-button" id="source-play-btn"></div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                {% elif source_type_2 == 2 %}
+
+                <div class="sampleVideos sample-layout-row media-wrapper">
+                    <div class="sample-embed embed-dest sample-layout-row-right media-container spotify">
+
+
+                        <iframe loading="lazy" src="https://embed.spotify.com/?uri=spotify:track:{{ data_id_2 }}"
+                            frameborder="0" allowtransparency="true"
+                            style="width:342px;height:192px;background-color:#272626;"
+                            title="Spotify embed {{ data_id_2 }}"></iframe>
+
+
+                    </div>
+                </div>
+
+                {% endif %}
+
+                <div class="sampleAdditionalInfo sample-layout-row">
+                    <div class="sampleAdditionalInfoContainer sample-layout-row-right">
+
+                        <div id="answers">
+
+                        </div>
+                        <script>
+                            var songId = {{ song_id }}
+                            function shuffle(a) {
+                                for (let i = a.length - 1; i > 0; i--) {
+                                    const j = Math.floor(Math.random() * (i + 1));
+                                    [a[i], a[j]] = [a[j], a[i]];
+                                }
+                                return a;
+                            }
+                            var answers = shuffle({{ choices| safe }});
+
+                            function createButton() {
+                                for (var i = 0; i < answers.length; i++) {
+                                    var button = document.createElement('button');
+                                    button.id = 'buttonAnswer';
+                                    button.innerHTML = answers[i];
+                                    button.value = answers[i];
+                                    button.className = 'btnAns btn btn-outline-default btn-lg btn-block';
+                                    var ansDiv = document.getElementById("answers");
+                                    ansDiv.appendChild(button);
+                                }
+                            }
+                            createButton();
+                        </script>
+                    </div>
+                </div>
+
+            </div>
+
+            </section>
+        </div>
+        
+    
+
+    </div>

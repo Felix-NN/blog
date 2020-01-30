@@ -12,6 +12,11 @@ from facebook_graph import fb_graph
 from ba_graph import bagraph
 from ws_graph import wsgraph
 
+from app import db
+from app.models import Song, Answer
+
+from sample_queries import random_song, next_song, prev_song, get_song, rand_ans
+
 @app.route('/')
 @app.route('/index')
 def index():
@@ -64,6 +69,119 @@ def facebook_graph():
 @app.route('/restaurant')
 def restaurant():
     return render_template("restaurant.html", title = "Restaurant Predictor")
+
+@app.route('/sample')
+def sample():
+    song, answer, song_id = random_song()
+    artist_1 = song.artist
+    artist_2 = answer.artist
+    song_name_1 = song.song_name
+    song_name_2 = answer.song_name
+    data_id_1 = song.source
+    data_id_2 = answer.source
+    source_type_1 = song.source_type
+    source_type_2 = answer.source_type
+    throughout_1 = song.throughout
+    throughout_2 = answer.throughout
+    times_1 = song.times.split(',')
+    times_2 = answer.times.split(',')
+    times_1 = [int(i) for i in times_1]
+    times_2 = [int(i) for i in times_2]
+    choices = rand_ans(song_id)
+    full_ans = artist_2 + ' - ' + song_name_2
+    choices.append(full_ans)
+    song_info = {}
+    count = 0
+    while count <= 124:
+        rel_song, extra = next_song(count)
+        art = rel_song.artist
+        song_nm = rel_song.song_name
+        id_num = rel_song.id
+        title = art + ' - ' + song_nm
+        song_info[id_num] = title
+        count = count + 1
+        
+
+    return render_template("sample.html", 
+    title='Sample Quiz',
+    artist_1 = artist_1,
+    artist_2 = artist_2,
+    song_name_1 = song_name_1,
+    song_name_2 = song_name_2,
+    data_id_1 = data_id_1, 
+    data_id_2 = data_id_2,
+    source_type_1 = source_type_1,
+    source_type_2 = source_type_2,
+    throughout_1 = throughout_1,
+    throughout_2 = throughout_2,
+    times_1 = times_1,
+    times_2 = times_2,
+    song_id = song_id,
+    choices = json.dumps(choices),
+    song_info = song_info)
+
+@app.route('/_update_sample', methods=['GET', 'POST'])
+def _update_sample():
+    butt_choice = request.form['button']
+    if butt_choice == 'random':
+        song, answer, song_id = random_song()
+    elif butt_choice == 'next':
+        song_id = int(request.form['song_id'])
+        song, answer = next_song(song_id)
+        song_id = song_id + 1
+    elif butt_choice == 'prev':
+        song_id = int(request.form['song_id'])
+        song, answer = prev_song(song_id)        
+        song_id = song_id - 1
+    elif butt_choice == 'get':
+        song_id = int(request.form['song_id'])
+        song, answer = get_song(song_id)
+    
+    artist_1 = song.artist
+    artist_2 = answer.artist
+    song_name_1 = song.song_name
+    song_name_2 = answer.song_name
+    data_id_1 = song.source
+    data_id_2 = answer.source
+    source_type_1 = song.source_type
+    source_type_2 = answer.source_type
+    throughout_1 = song.throughout
+    throughout_2 = answer.throughout
+    times_1 = song.times.split(',')
+    times_2 = answer.times.split(',')
+    times_1 = [int(i) for i in times_1]
+    times_2 = [int(i) for i in times_2]
+    choices = rand_ans(song_id)
+    full_ans = artist_2 + ' - ' + song_name_2
+    choices.append(full_ans)
+
+    song_info = {}
+    count = 0
+    while count <= 124:
+        rel_song, extra = next_song(count)
+        art = rel_song.artist
+        song_nm = rel_song.song_name
+        id_num = rel_song.id
+        title = art + ' - ' + song_nm
+        song_info[id_num] = title
+        count = count + 1
+
+    return render_template("updated_sample.html", 
+    artist_1 = artist_1,
+    artist_2 = artist_2,
+    song_name_1 = song_name_1,
+    song_name_2 = song_name_2,
+    data_id_1 = data_id_1, 
+    data_id_2 = data_id_2,
+    source_type_1 = source_type_1,
+    source_type_2 = source_type_2,
+    throughout_1 = throughout_1,
+    throughout_2 = throughout_2,
+    times_1 = times_1,
+    times_2 = times_2,
+    song_id = song_id,
+    choices = json.dumps(choices),
+    song_info = song_info)
 
 if __name__=='__main__':
     app.run()

@@ -1,3 +1,4 @@
+import time
 import json
 from flask import Flask, render_template, request, jsonify
 from app import app
@@ -182,6 +183,11 @@ def _update_sample():
     song_id = song_id,
     choices = json.dumps(choices),
     song_info = song_info)
+
+@app.route('/stocks')
+def get_current_time():
+    times = {'time': time.time()}
+    return jsonify(times)
 
 if __name__=='__main__':
     app.run()

@@ -18,6 +18,8 @@ from app.models import Song, Answer
 
 from sample_queries import random_song, next_song, prev_song, get_song, rand_ans
 
+from yfinance_lookup import stock
+
 @app.route('/')
 @app.route('/index')
 def index():
@@ -186,8 +188,18 @@ def _update_sample():
 
 @app.route('/stocks')
 def get_current_time():
-    times = {'time': time.time()}
-    return jsonify(times)
+    
+    company = 'nike'
+    lookup = stock()
+    data = lookup.routine(company)
+    print('Ready!')
+    return jsonify(data)
+
+#@app.route('/_update_stocks', methods=['GET', 'POST'])
+#def stock_update():
+    #times = {'time': time.time()}
+    
+
 
 if __name__=='__main__':
     app.run()

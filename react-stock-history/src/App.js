@@ -2,12 +2,22 @@ import React from 'react';
 import './App.css';
 
 import CanvasJSReact from './canvasjs.react';
-var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
- 
 
 var dataPoints = []
 var websites = []
+
+function ListWebsites(props) {
+  
+    
+    return( 
+      null
+      
+      //<span key={props.key}>
+      //  <a href={props.sites}> {props.sites} </a>
+      //</span>
+    )
+}
 
 class App extends React.Component {
 
@@ -15,9 +25,13 @@ class App extends React.Component {
     super()
     this.state = {
       loading: false,
-      stock: {}
-    };
-  };
+      stock: {},
+      sites: [],
+      card_info: {},
+      date: ''
+    }
+    this.onClick = this.onClick.bind(this)
+  }
 
   componentDidMount() {
     this.setState({loading:true})
@@ -25,7 +39,8 @@ class App extends React.Component {
     fetch('/stocks')
     .then(res => res.json())
     .then(data => {
-      data = JSON.parse(data)
+      //console.log(data)
+      //data = JSON.parse(data)
       this.setState({
         stock: data,
         loading: false
@@ -57,19 +72,36 @@ class App extends React.Component {
         
       }
       chart.render()
-      console.log(websites)
     })
   }
   
   onClick(e) {
-
     for (let key of Object.keys(websites)) {
       if (websites[key].x.getTime() === e.dataPoint.x.getTime()){
-        console.log(websites[key].sites)
+        this.setState({
+          sites: websites[key].sites,
+          date: websites[key].x.toDateString().split(' ').slice(1).join(' ')
+        })
         break
       }
     }
     
+    console.log(this.state.sites)
+  fetch('/_link_prev', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(this.state.sites)
+  })
+  .then(response => response.json())
+  .then(data => {
+  this.setState({
+    card_info: data
+  })
+  console.log(this.state.card_info)
+  })
+
   }
    
 
@@ -106,7 +138,11 @@ class App extends React.Component {
 				 onRef={ref => this.chart = ref}
 			/>
           </div>
+          <p>{this.state.date}</p>
           <button onClick={this.handleClick}>Call API</button>
+          
+          <ListWebsites key={this.state.sites.x} sites={this.state.sites}/>
+          
       </div>
     )
   }

@@ -1,5 +1,6 @@
-import time
+from os import link
 import json
+import re
 from flask import Flask, render_template, request, jsonify
 from app import app
 from bokeh.resources import CDN
@@ -19,6 +20,7 @@ from app.models import Song, Answer
 from sample_queries import random_song, next_song, prev_song, get_song, rand_ans
 
 from yfinance_lookup import stock
+from link_preview import *
 
 @app.route('/')
 @app.route('/index')
@@ -187,17 +189,35 @@ def _update_sample():
     song_info = song_info)
 
 @app.route('/stocks')
-def get_current_time():
-    
-    company = 'nike'
-    lookup = stock()
-    data = lookup.routine(company)
-    print('Ready!')
+def stock_page():
+    with open('data.json') as f:
+        data = json.load(f)
+    #company = 'nike'
+    #lookup = stock()
+    #data = lookup.routine(company)
+    #print('Ready!')
     return jsonify(data)
 
 #@app.route('/_update_stocks', methods=['GET', 'POST'])
 #def stock_update():
     #times = {'time': time.time()}
+
+@app.route('/_link_prev', methods=['GET', 'POST'])
+def get_link_prev():
+    data = request.get_json()
+    info = []
+    nasdaq = 'nasdaq'
+    for item in data:
+        if re.search(nasdaq, item):
+            continue
+        card_info = link_routine(item)
+        if card_info == None or card_info['title'] is None or card_info['desc'] is None or card_info['domain'] is None:
+            continue
+        else:
+            info.append(card_info)
+
+    return jsonify(info)
+
     
 
 

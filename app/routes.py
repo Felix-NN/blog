@@ -192,15 +192,14 @@ def _update_sample():
 def stock_page():
     with open('data.json') as f:
         data = json.load(f)
-    #company = 'nike'
-    #lookup = stock()
-    #data = lookup.routine(company)
-    #print('Ready!')
     return jsonify(data)
 
-#@app.route('/_update_stocks', methods=['GET', 'POST'])
-#def stock_update():
-    #times = {'time': time.time()}
+@app.route('/_update_stocks', methods=['GET', 'POST'])
+def stock_update():
+    company = request.get_json()
+    lookup = stock()
+    data = lookup.routine(company)
+    return jsonify(data)
 
 @app.route('/_link_prev', methods=['GET', 'POST'])
 def get_link_prev():

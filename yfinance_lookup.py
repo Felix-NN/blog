@@ -88,7 +88,7 @@ class stock:
             rand = float(rand)
             rand = rand/100
             websites = []
-            for res in search(company_search, tld='com', lang='en', num=10, pause=rand, stop=10, tpe='nws'):
+            for res in search(company_search, tld='com', lang='en', num=8, pause=rand, stop=8, tpe='nws'):
                 websites.append(res)
             web_dates[date] = websites
         web_dates = pd.Series(web_dates, name='Websites')

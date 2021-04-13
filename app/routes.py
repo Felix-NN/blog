@@ -1,4 +1,6 @@
+from os import link
 import json
+import re
 from flask import Flask, render_template, request, jsonify
 from app import app
 from bokeh.resources import CDN
@@ -16,6 +18,9 @@ from app import db
 from app.models import Song, Answer
 
 from sample_queries import random_song, next_song, prev_song, get_song, rand_ans
+
+from yfinance_lookup import stock
+from link_preview import *
 
 @app.route('/')
 @app.route('/index')
@@ -182,6 +187,33 @@ def _update_sample():
     song_id = song_id,
     choices = json.dumps(choices),
     song_info = song_info)
+
+@app.route('/stocks')
+def stock_page():
+    return render_template("stock.html", title='Stock History (React App)')
+
+@app.route('/_update_stocks', methods=['GET', 'POST'])
+def stock_update():
+    company = request.get_json()
+    lookup = stock()
+    data = lookup.routine(company)
+    return jsonify(data)
+
+@app.route('/_link_prev', methods=['GET', 'POST'])
+def get_link_prev():
+    data = request.get_json()
+    info = []
+    for item in data:
+        card_info = link_routine(item)
+        if card_info == None or card_info['title'] is None or card_info['desc'] is None or card_info['domain'] is None:
+            continue
+        else:
+            info.append(card_info)
+
+    return jsonify(info)
+
+    
+
 
 if __name__=='__main__':
     app.run()

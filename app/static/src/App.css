@@ -1,0 +1,49 @@
+._loading_overlay_wrapper {
+  height: 100%;
+  min-height: 100vh;
+}
+
+.card-title {
+  color: #0F1531;
+}
+
+.date-chosen {
+  color: #F4EDE1;
+  font-family: 'Raleway', sans-serif;
+  text-shadow: 3px 3px 5px #000000;
+  font-size: 3em;
+  justify-content: center;
+}
+
+.chart {
+  padding: 1%;
+}
+
+.cards {
+  background-color: #F4EDE1;
+  
+}
+.company-warning {
+  color: #F4EDE1 !important;
+}
+
+.card-row {
+  padding: 1%;
+}
+
+.card-text {
+  padding-bottom: 10px;
+}
+
+.card-button {
+  background: #0F1531 !important;
+  color: #F4EDE1 !important;
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+}
+
+.company-button, .modal-button {
+  background: #0F1531 !important;
+  color: #F4EDE1 !important;
+}

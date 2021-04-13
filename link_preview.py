@@ -53,7 +53,7 @@ def find_img(head):
         return None
         
 def link_routine(url):
-    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36"}
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"}
 
     source = requests.get(url, headers=headers).text
     soup = BeautifulSoup(source, 'lxml')

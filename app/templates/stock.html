@@ -1,0 +1,20 @@
+ {% extends "base.html" %}
+
+{% block head %}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="{{ url_for('static', filename='styles/favicon.ico') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/stock.css') }}">
+</head>
+
+{% endblock %}
+
+{% block content %}
+<body style="background-color: #3D96D0 !important;">
+   <div id="root"></div> 
+</body>
+
+<script src="{{ url_for('static', filename='dist/bundle.js') }}"></script>
+{% endblock %}

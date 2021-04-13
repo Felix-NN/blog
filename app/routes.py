@@ -190,9 +190,7 @@ def _update_sample():
 
 @app.route('/stocks')
 def stock_page():
-    with open('data.json') as f:
-        data = json.load(f)
-    return jsonify(data)
+    return render_template("stock.html", title='Stock History (React App)')
 
 @app.route('/_update_stocks', methods=['GET', 'POST'])
 def stock_update():
@@ -205,10 +203,7 @@ def stock_update():
 def get_link_prev():
     data = request.get_json()
     info = []
-    nasdaq = 'nasdaq'
     for item in data:
-        if re.search(nasdaq, item):
-            continue
         card_info = link_routine(item)
         if card_info == None or card_info['title'] is None or card_info['desc'] is None or card_info['domain'] is None:
             continue

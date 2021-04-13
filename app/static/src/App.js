@@ -57,7 +57,7 @@ function ErrorModal (props) {
         <h4>Oops, something went wrong! Please try again.</h4>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="default" className='modalButton' onClick={props.onHide}>Close</Button>
+        <Button variant="default" className='button' onClick={props.onHide}>Close</Button>
       </Modal.Footer>
     </Modal>
   )

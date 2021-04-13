@@ -70,7 +70,7 @@ class stock:
             if len(stocks) <= 2:
                 spike_dates[date] = 0
         """
-        result = thresholding_algo(data, lag=5, threshold=3.5, influence=.5)
+        result = thresholding_algo(data, lag=5, threshold=3.75, influence=.7)
         dates = []
         for index, value in data.iteritems():
             dates.append(index)
@@ -84,11 +84,11 @@ class stock:
         for date, value in spike_dates.iterrows():
             date = date.strftime('%Y-%m-%d')
             company_search = company + ' stock ' + date
-            rand = random.randrange(10, 50)
+            rand = random.randrange(10, 40)
             rand = float(rand)
             rand = rand/100
             websites = []
-            for res in search(company_search, tld='com', lang='en', num=8, pause=rand, stop=8, tpe='nws'):
+            for res in search(company_search, tld='com', lang='en', num=4, pause=rand, stop=4, tpe='nws'):
                 websites.append(res)
             web_dates[date] = websites
         web_dates = pd.Series(web_dates, name='Websites')

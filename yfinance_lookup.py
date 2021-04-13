@@ -84,7 +84,7 @@ class stock:
         for date, value in spike_dates.iterrows():
             date = date.strftime('%Y-%m-%d')
             company_search = company + ' stock ' + date
-            rand = random.randrange(100, 200)
+            rand = random.randrange(10, 50)
             rand = float(rand)
             rand = rand/100
             websites = []

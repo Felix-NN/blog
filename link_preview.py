@@ -2,6 +2,7 @@
 from bs4 import BeautifulSoup
 import requests
 
+from time import time
 
 #%%
 
@@ -53,12 +54,12 @@ def find_img(head):
         return None
         
 def link_routine(url):
+    ts = time()
     headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"}
-
+    print('Url sent: ', url)
     source = requests.get(url, headers=headers).text
     soup = BeautifulSoup(source, 'lxml')
     head = soup.find('head')
-
     info = {}
     try:
         info['title'] = find_title(head)
@@ -67,7 +68,7 @@ def link_routine(url):
         info['img'] = find_img(head)
     except:
         return None
-    
+    print('Total Link Routine took %2.3f seconds' % (time() - ts))
     return info
 
 

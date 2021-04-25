@@ -1,7 +1,9 @@
+from math import inf
 from os import link
 import json
 import re
 from flask import Flask, render_template, request, jsonify
+from numpy.lib.utils import info
 from app import app
 from bokeh.resources import CDN
 from bokeh.embed import components
@@ -21,6 +23,8 @@ from sample_queries import random_song, next_song, prev_song, get_song, rand_ans
 
 from yfinance_lookup import stock
 from link_preview import *
+
+import multiprocessing
 
 @app.route('/')
 @app.route('/index')
@@ -202,13 +206,12 @@ def stock_update():
 @app.route('/_link_prev', methods=['GET', 'POST'])
 def get_link_prev():
     data = request.get_json()
-    info = []
-    for item in data:
-        card_info = link_routine(item)
-        if card_info == None or card_info['title'] is None or card_info['desc'] is None or card_info['domain'] is None:
-            continue
-        else:
-            info.append(card_info)
+    pool = multiprocessing.Pool()
+    info = pool.map(link_routine, data)
+    pool.close()
+    pool.join()
+    info = list(filter(None, info))
+    info = list(filter(None, ({key : val for key, val in sub.items() if val} for sub in info)))
 
     return jsonify(info)
 

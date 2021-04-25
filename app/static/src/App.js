@@ -25,12 +25,12 @@ function ListWebsites(props) {
       <Card style={{ width: '25rem' }}>
         <Card.Img variant="top" src={cards.img} />
           <Card.Body className='cards'>
-          <Card.Title > <a href={cards.domain} className='card-title'> {cards.title} </a> </Card.Title>
+          <Card.Title > <a href={cards.domain} target="_blank" rel="noopener noreferrer" className='card-title'> {cards.title} </a> </Card.Title>
           <Card.Text className='card-text'>
           <p>{cards.desc}</p>
           <span className="text-muted">{cards.domain.split('/', 3).slice(1)}</span>
           </Card.Text>
-          <Button variant="default" className='card-button' href={cards.domain}>Go to Article</Button>
+          <Button variant="default" className='card-button' href={cards.domain} target="_blank" rel="noopener noreferrer">Go to Article</Button>
           </Card.Body>
       </Card>
       )
@@ -57,7 +57,7 @@ function ErrorModal (props) {
         <h4>Oops, something went wrong! Please try again.</h4>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="default" className='button' onClick={props.onHide}>Close</Button>
+        <Button variant="default" className='modal-button' onClick={props.onHide}>Close</Button>
       </Modal.Footer>
     </Modal>
   )
@@ -230,7 +230,7 @@ class App extends React.Component {
         break
       }
     }
-
+    //console.log(this.state.sites)
   fetch('/_link_prev', {
     method: 'POST',
     headers: {
@@ -250,6 +250,7 @@ class App extends React.Component {
       })
     })
   .then(data => {
+    //console.log(data)
     data = JSON.stringify(data)
   this.setState({
     card_info1: JSON.parse(data).slice(0,4),
@@ -295,7 +296,7 @@ class App extends React.Component {
           <LoadingOverlay
             active={this.state.loading}
             spinner
-            text='Loading may take about a minute or so, please wait...'
+            text='Loading, please wait...'
             >
           <LoadingOverlay
             active={this.state.cardLoading}

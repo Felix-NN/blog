@@ -206,7 +206,7 @@ def stock_update():
 @app.route('/_link_prev', methods=['GET', 'POST'])
 def get_link_prev():
     data = request.get_json()
-    skip = ['nasdaq']
+    skip = ['nasdaq', 'usnews', 'cleantechnica', 'gurufocus']
     data = list(filter(lambda x: not any(s in x.lower() for s in skip), data))
     pool = multiprocessing.Pool()
     info = pool.map(link_routine, data)

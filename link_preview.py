@@ -55,8 +55,8 @@ def find_img(head):
         
 def link_routine(url):
     ts = time()
-    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"}
-    print('Url sent: ', url)
+    #headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"}
+    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1.1 Safari/605.1.15'}
     source = requests.get(url, headers=headers).text
     soup = BeautifulSoup(source, 'lxml')
     head = soup.find('head')
@@ -68,7 +68,7 @@ def link_routine(url):
         info['img'] = find_img(head)
     except:
         return None
-    print('Total Link Routine took %2.3f seconds' % (time() - ts))
+    print(url, ' took %2.3f seconds' % (time() - ts))
     return info
 
 
